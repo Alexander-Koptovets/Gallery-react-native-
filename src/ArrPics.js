@@ -9,7 +9,6 @@ export class ArrPics extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            pressStatus: false,
             count: 0, 
         };
         this.componentDidMount = this.componentDidMount.bind(this);
@@ -19,12 +18,6 @@ export class ArrPics extends React.Component {
         this.setState(({ count }) => ({
             count: count + 1,
         })); 
-    }
-
-    addMorePics() {
-        !this.state.pressStatus 
-        ? this.setState({ pressStatus: true }) 
-        : this.setState({ pressStatus: false })
     }
 
     componentDidMount() {

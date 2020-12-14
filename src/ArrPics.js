@@ -5,24 +5,22 @@ import { Img } from './getPic'
 
 const request  = require('superagent');
 
-// export function Img(props) {
-//     return (
-//         <Image 
-//             style={styles.img}
-//             source={ {uri: props.src} }
-//         />
-//     )
-// }
-
 export class ArrPics extends React.Component {
     constructor(props){
         super(props)
         this.state = {
             pressStatus: false,
+            count: 0, 
         };
         this.componentDidMount = this.componentDidMount.bind(this);
-        this.addMorePics = this.addMorePics.bind(this); 
+        this.addPic = this.addPic.bind(this);
     }
+    addPic() {
+        this.setState(({ count }) => ({
+            count: count + 1,
+        })); 
+    }
+
     addMorePics() {
         !this.state.pressStatus 
         ? this.setState({ pressStatus: true }) 
@@ -64,12 +62,12 @@ export class ArrPics extends React.Component {
                 <Img src={this.state.urls8} />
                 <Img src={this.state.urls9} />
                 <Img src={this.state.urls10} />
-                {this.state.pressStatus 
-                    ? <Pic />
-                    : null}
+                
+                {[...Array(this.state.count)].map(() => 
+                <Pic />)} 
             </View>
             <Button
-            onPress={this.addMorePics}
+            onPress={this.addPic}
             color='green'
             title='More Photos'
         />  

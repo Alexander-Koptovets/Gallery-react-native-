@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Pic } from './src/image.js'
+import { ArrPics } from './src/ArrPics'
 
 export default function App() {
   return (
@@ -10,16 +11,7 @@ export default function App() {
         Gallary
       </Text>
       <ScrollView>
-        <View style={styles.pictures}>
-          <View><Pic /></View>
-          <View><Pic /></View>
-          <View><Pic /></View>
-          <View><Pic /></View>
-          <View><Pic /></View>
-          <View><Pic /></View>
-          <View><Pic /></View>
-          <View><Pic /></View>
-        </View>
+        <ArrPics />
       </ScrollView>
     </View>
   );
@@ -31,10 +23,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  pictures: {
-    flexDirection: 'row',
-    flexWrap: 'wrap', 
   },
   font: {
     color: "#fff", 

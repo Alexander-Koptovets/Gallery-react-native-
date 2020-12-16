@@ -10,6 +10,7 @@ export class ArrPics extends React.Component {
         super(props)
         this.state = {
             count: 0, 
+            links: [], 
         };
         this.componentDidMount = this.componentDidMount.bind(this);
         this.addPic = this.addPic.bind(this);
@@ -27,16 +28,9 @@ export class ArrPics extends React.Component {
             .set('Accept', 'application/json')
             .end((err, resp) => {
                 if (!err) {
-                    this.setState({urls1: resp.body[0].urls.small});
-                    this.setState({urls2: resp.body[1].urls.small});
-                    this.setState({urls3: resp.body[2].urls.small});
-                    this.setState({urls4: resp.body[3].urls.small});
-                    this.setState({urls5: resp.body[4].urls.small});
-                    this.setState({urls6: resp.body[5].urls.small});
-                    this.setState({urls7: resp.body[6].urls.small});
-                    this.setState({urls8: resp.body[7].urls.small});
-                    this.setState({urls9: resp.body[8].urls.small});
-                    this.setState({urls10: resp.body[9].urls.small}); 
+                    let arr = this.state.links;
+                    resp.body.map((i) => arr.push(i.urls.small));
+                    this.setState({links: arr});
                 }
             })
     }
@@ -45,16 +39,7 @@ export class ArrPics extends React.Component {
         return (
             <View>
             <View style={styles.content}>
-                <Img src={this.state.urls1} />
-                <Img src={this.state.urls2} />
-                <Img src={this.state.urls3} />
-                <Img src={this.state.urls4} />
-                <Img src={this.state.urls5} />
-                <Img src={this.state.urls6} />
-                <Img src={this.state.urls7} />
-                <Img src={this.state.urls8} />
-                <Img src={this.state.urls9} />
-                <Img src={this.state.urls10} />
+            {this.state.links.map((item) => <Img src={item}/>)}
                 
                 {[...Array(this.state.count)].map(() => 
                 <Pic />)} 

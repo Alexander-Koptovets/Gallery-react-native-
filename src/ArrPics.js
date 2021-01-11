@@ -39,7 +39,7 @@ export class ArrPics extends React.Component {
         return (
             <View>
             <View style={styles.content}>
-            {this.state.links.map((item) => <Img src={item}/>)}
+            {this.state.links.map((item, i) => <Img src={item} key={i}/>)}
                 
                 {[...Array(this.state.count)].map(() => 
                 <Pic />)} 

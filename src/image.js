@@ -6,7 +6,10 @@ const request  = require('superagent');
 export class Pic extends React.Component {
     constructor(props){
         super(props);
-        this.state = {url: null}
+        this.state = {
+            url: null,
+        }
+        this.componentDidMount = this.componentDidMount.bind(this);
     }
     componentDidMount() {
         request
